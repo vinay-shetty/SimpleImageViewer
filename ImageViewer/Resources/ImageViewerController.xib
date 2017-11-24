@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,6 +14,7 @@
                 <outlet property="activityIndicator" destination="oPl-2f-Knx" id="GOD-eG-o96"/>
                 <outlet property="imageView" destination="rHA-5m-kkS" id="V86-k1-pPH"/>
                 <outlet property="scrollView" destination="cQD-2Q-pvo" id="M6k-QU-OVY"/>
+                <outlet property="shareButton" destination="TgF-gw-TFs" id="obn-Vd-hW7"/>
                 <outlet property="view" destination="iN0-l3-epB" id="bEt-1B-b5l"/>
             </connections>
         </placeholder>
@@ -56,12 +57,28 @@
                         <action selector="closeButtonPressed" destination="-1" eventType="touchUpInside" id="jwg-86-OJF"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgF-gw-TFs">
+                    <rect key="frame" x="331" y="0.0" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="8r2-VK-hPK"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="FpZ-F9-sck"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="ofR-9e-yq4"/>
+                        <constraint firstAttribute="height" constant="44" id="r04-7V-VYA"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                    <state key="normal" image="shareButton"/>
+                    <connections>
+                        <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="Qit-A6-A06"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="oPl-2f-Knx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4hr-Ua-OMa"/>
                 <constraint firstItem="cQD-2Q-pvo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ErM-q5-uey"/>
                 <constraint firstItem="Wsy-fe-raz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GNz-6j-kdf"/>
+                <constraint firstAttribute="trailing" secondItem="TgF-gw-TFs" secondAttribute="trailing" id="Pw5-ag-VRi"/>
+                <constraint firstItem="TgF-gw-TFs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="XzE-IA-c15"/>
                 <constraint firstItem="rHA-5m-kkS" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Zh5-4A-UbJ"/>
                 <constraint firstAttribute="trailing" secondItem="cQD-2Q-pvo" secondAttribute="trailing" id="fiR-iH-AGe"/>
                 <constraint firstAttribute="bottom" secondItem="cQD-2Q-pvo" secondAttribute="bottom" id="kQk-Ie-iGl"/>
@@ -75,5 +92,6 @@
     </objects>
     <resources>
         <image name="closeButton" width="13" height="13"/>
+        <image name="shareButton" width="32" height="32"/>
     </resources>
 </document>

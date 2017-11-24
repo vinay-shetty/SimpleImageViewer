@@ -5,6 +5,7 @@ public final class ImageViewerController: UIViewController {
     @IBOutlet fileprivate var scrollView: UIScrollView!
     @IBOutlet fileprivate var imageView: UIImageView!
     @IBOutlet fileprivate var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var shareButton: UIButton!
     
     fileprivate var transitionHandler: ImageViewerTransitioningHandler?
     fileprivate let configuration: ImageViewerConfiguration?
@@ -28,6 +29,7 @@ public final class ImageViewerController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        self.shareButton.isHidden = configuration?.hideShare ?? false
         imageView.image = configuration?.imageView?.image ?? configuration?.image
         
         setupScrollView()
@@ -96,6 +98,14 @@ private extension ImageViewerController {
     
     @IBAction func closeButtonPressed() {
         dismiss(animated: true)
+    }
+    
+    @IBAction func shareButtonPressed(_ sender: Any) {
+        let shareActivityViewController = UIActivityViewController(activityItems: [self.imageView.image], applicationActivities: nil)
+        
+        shareActivityViewController.popoverPresentationController?.sourceRect = (sender as! UIButton).frame
+        present(shareActivityViewController, animated: true, completion: nil)
+
     }
     
     @objc func imageViewDoubleTapped() {
