@@ -103,7 +103,7 @@ private extension ImageViewerController {
     @IBAction func shareButtonPressed(_ sender: Any) {
         let shareActivityViewController = UIActivityViewController(activityItems: [self.imageView.image], applicationActivities: nil)
         
-        shareActivityViewController.popoverPresentationController?.sourceRect = (sender as! UIButton).frame
+        shareActivityViewController.popoverPresentationController?.sourceView = (sender as! UIButton)
         present(shareActivityViewController, animated: true, completion: nil)
 
     }
