@@ -1,6 +1,10 @@
 import UIKit
 import AVFoundation
 
+public protocol ImageViewerControllerDelegate: class {
+    func imageViewerClosed()
+}
+
 public final class ImageViewerController: UIViewController {
     @IBOutlet fileprivate var scrollView: UIScrollView!
     @IBOutlet fileprivate var imageView: UIImageView!
@@ -9,6 +13,8 @@ public final class ImageViewerController: UIViewController {
     
     fileprivate var transitionHandler: ImageViewerTransitioningHandler?
     fileprivate let configuration: ImageViewerConfiguration?
+    
+    public weak var delegate: ImageViewerControllerDelegate?
     
     public override var prefersStatusBarHidden: Bool {
         return true
@@ -98,6 +104,7 @@ private extension ImageViewerController {
     
     @IBAction func closeButtonPressed() {
         dismiss(animated: true)
+        delegate?.imageViewerClosed()
     }
     
     @IBAction func shareButtonPressed(_ sender: Any) {
@@ -135,6 +142,7 @@ private extension ImageViewerController {
             let percentage = abs(translation.y + velocity.y) / imageView.bounds.height
             if percentage > 0.25 {
                 transitionHandler?.dismissalInteractor.finish()
+                delegate?.imageViewerClosed()
             } else {
                 transitionHandler?.dismissalInteractor.cancel()
             }
